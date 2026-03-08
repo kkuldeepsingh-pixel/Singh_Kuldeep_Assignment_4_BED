@@ -14,3 +14,13 @@ export const getLoanById = (req: Request, res: Response) => {
 
   res.json(loan);
 };
+
+export const createLoan = (req: Request, res: Response) => {
+  const newLoan = {
+    id: Date.now().toString(),
+    ...req.body
+  };
+
+  loans.push(newLoan);
+  res.status(201).json(newLoan);
+};
