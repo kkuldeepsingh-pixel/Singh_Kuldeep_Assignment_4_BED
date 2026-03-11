@@ -3,3 +3,4 @@ dist/
 .env/
 logs/
 src/logs/
+src/logs/*.log
