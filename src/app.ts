@@ -31,5 +31,6 @@ app.get("/health", (req, res) => {
 });
 
 app.use(errorHandler);
+app.use("/api/v1", authRoutes);
 
 export default app;
