@@ -30,3 +30,22 @@ export const setUserRole = async (req: Request, res: Response) => {
     res.status(400).json({ message: "Failed to assign role" });
   }
 };
+
+// Admin-only: Assign a role to a user
+export const assignRole = async (req: Request, res: Response) => {
+  const { uid, role } = req.body;
+
+  if (!uid || !role) {
+    return res.status(400).json({ message: "UID and role are required" });
+  }
+
+  try {
+    // Set custom claim
+    await admin.auth().setCustomUserClaims(uid, { role });
+
+    return res.status(200).json({ message: `Role '${role}' assigned to user ${uid}` });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "Failed to assign role" });
+  }
+};
