@@ -4,3 +4,4 @@ dist/
 logs/
 src/logs/
 src/logs/*.log
+src/config/firebase-service-account.json
